@@ -1,0 +1,13 @@
+body { 
+	background-color: lightblue;	/* Голубой фон */
+	color: black;						/* Чёрный текст */
+}
+
+h1 { 
+	color: red;		/* Синий заголовок */
+}
+
+p { 
+	font-size: 10px;	/* Размер шрифта абзаца */
+    color: green;
+}

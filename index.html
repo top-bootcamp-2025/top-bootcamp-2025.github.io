@@ -97,6 +97,8 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         
         .portfolio-item:hover {
@@ -121,6 +123,9 @@
         
         .portfolio-content {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .portfolio-title {
@@ -131,6 +136,13 @@
         .portfolio-description {
             color: #7f8c8d;
             margin-bottom: 15px;
+        }
+        
+        .portfolio-buttons {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
         }
         
         .portfolio-link {
@@ -145,6 +157,20 @@
         
         .portfolio-link:hover {
             background-color: #27ae60;
+        }
+        
+        .portfolio-description-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #bdc3c7;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .portfolio-description-btn:hover {
+            background-color: #95a5a6;
         }
         
         .student-name {
@@ -222,7 +248,10 @@
                     <div class="course-name">Курс "Основы веб разработки"</div>
                     <h3 class="portfolio-title">Страница по любимой игре</h3>
                     <p class="portfolio-description">Кокичи — один из самых загадочных и противоречивых персонажей во франшизе Danganronpa.</p>
-                    <a href="https://aikincriaitere.github.io/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
+                        <a href="https://aikincriaitere.github.io/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    </div>
                 </div>
             </div>
             
@@ -234,7 +263,10 @@
                     <div class="course-name">Курс "Основы веб разработки"</div>
                     <h3 class="portfolio-title">Брендинг кафе</h3>
                     <p class="portfolio-description">Разработка логотипа, фирменного стиля и меню для кофейни.</p>
-                    <a href="https://lascor4ik.github.io/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
+                        <a href="https://lascor4ik.github.io/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    </div>
                 </div>
             </div>
             
@@ -246,7 +278,10 @@
                     <div class="course-name">Курс "Основы веб разработки"</div>
                     <h3 class="portfolio-title">Страница игры Undertale</h3>
                     <p class="portfolio-description">Undertale — это уникальная ролевая игра, созданная Тоби Фоксом.</p>
-                    <a href="https://dfrainx.github.io/undertale/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
+                        <a href="https://dfrainx.github.io/undertale/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    </div>
                 </div>
             </div>
             
@@ -258,7 +293,10 @@
                     <div class="course-name">Курс "SMM"</div>
                     <h3 class="portfolio-title">Кампания для бренда одежды</h3>
                     <p class="portfolio-description">Разработка и реализация SMM-стратегии для локального бренда.</p>
-                    <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
+                        <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    </div>
                 </div>
             </div>
             
@@ -270,7 +308,10 @@
                     <div class="course-name">Курс "JavaScript"</div>
                     <h3 class="portfolio-title">Интерактивная карта</h3>
                     <p class="portfolio-description">Карта с маркерами и возможностью построения маршрутов.</p>
-                    <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
+                        <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    </div>
                 </div>
             </div>
             
@@ -282,7 +323,10 @@
                     <div class="course-name">Курс "UI/UX дизайн"</div>
                     <h3 class="portfolio-title">Мобильное приложение</h3>
                     <p class="portfolio-description">Дизайн и прототипирование приложения для фитнес-трекера.</p>
-                    <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
+                        <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                    </div>
                 </div>
             </div>
         </div>

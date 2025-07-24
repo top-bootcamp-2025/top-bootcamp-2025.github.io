@@ -99,6 +99,7 @@
             transition: transform 0.3s;
             display: flex;
             flex-direction: column;
+            height: 100%; /* Добавлено */
         }
         
         .portfolio-item:hover {
@@ -126,6 +127,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            height: 100%; /* Добавлено */
         }
         
         .portfolio-title {
@@ -141,8 +143,9 @@
         .portfolio-buttons {
             margin-top: auto;
             display: flex;
-            justify-content: flex-end;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%; /* Добавлено */
         }
         
         .portfolio-link {
@@ -153,6 +156,7 @@
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
+            white-space: nowrap; /* Запрет переноса текста */
         }
         
         .portfolio-link:hover {
@@ -167,6 +171,7 @@
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
+            white-space: nowrap; /* Запрет переноса текста */
         }
         
         .portfolio-description-btn:hover {
@@ -249,8 +254,8 @@
                     <h3 class="portfolio-title">Страница по любимой игре</h3>
                     <p class="portfolio-description">Кокичи — один из самых загадочных и противоречивых персонажей во франшизе Danganronpa.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
-                        <a href="https://aikincriaitere.github.io/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                        <a href="#" class="portfolio-description-btn">Описание</a>
+                        <a href="https://aikincriaitere.github.io/" class="portfolio-link" target="_blank">Посмотреть</a>
                     </div>
                 </div>
             </div>
@@ -264,8 +269,8 @@
                     <h3 class="portfolio-title">Брендинг кафе</h3>
                     <p class="portfolio-description">Разработка логотипа, фирменного стиля и меню для кофейни.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
-                        <a href="https://lascor4ik.github.io/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                        <a href="#" class="portfolio-description-btn">Описание</a>
+                        <a href="https://lascor4ik.github.io/" class="portfolio-link" target="_blank">Посмотреть</a>
                     </div>
                 </div>
             </div>
@@ -279,8 +284,8 @@
                     <h3 class="portfolio-title">Страница игры Undertale</h3>
                     <p class="portfolio-description">Undertale — это уникальная ролевая игра, созданная Тоби Фоксом.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
-                        <a href="https://dfrainx.github.io/undertale/" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                        <a href="#" class="portfolio-description-btn">Описание</a>
+                        <a href="https://dfrainx.github.io/undertale/" class="portfolio-link" target="_blank">Посмотреть</a>
                     </div>
                 </div>
             </div>
@@ -294,8 +299,8 @@
                     <h3 class="portfolio-title">Кампания для бренда одежды</h3>
                     <p class="portfolio-description">Разработка и реализация SMM-стратегии для локального бренда.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
-                        <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                        <a href="#" class="portfolio-description-btn">Описание</a>
+                        <a href="#" class="portfolio-link" target="_blank">Посмотреть</a>
                     </div>
                 </div>
             </div>
@@ -309,8 +314,8 @@
                     <h3 class="portfolio-title">Интерактивная карта</h3>
                     <p class="portfolio-description">Карта с маркерами и возможностью построения маршрутов.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
-                        <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                        <a href="#" class="portfolio-description-btn">Описание</a>
+                        <a href="#" class="portfolio-link" target="_blank">Посмотреть</a>
                     </div>
                 </div>
             </div>
@@ -324,8 +329,8 @@
                     <h3 class="portfolio-title">Мобильное приложение</h3>
                     <p class="portfolio-description">Дизайн и прототипирование приложения для фитнес-трекера.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-description-btn">Описание проекта</a>
-                        <a href="#" class="portfolio-link" target="_blank">Посмотреть работу</a>
+                        <a href="#" class="portfolio-description-btn">Описание</a>
+                        <a href="#" class="portfolio-link" target="_blank">Посмотреть</a>
                     </div>
                 </div>
             </div>
@@ -356,7 +361,7 @@
                     
                     portfolioItems.forEach(item => {
                         if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
+                            item.style.display = 'flex'; /* Изменено с block на flex */
                         } else {
                             item.style.display = 'none';
                         }

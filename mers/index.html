@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz | Официальный дилер</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Глобальные стили */
+        :root {
+            --mb-primary: #00A1E0;
+            --mb-dark: #000000;
+            --mb-light: #F8F8F8;
+            --mb-gray: #333333;
+            --mb-silver: #C0C0C0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--mb-light);
+            color: var(--mb-gray);
+            line-height: 1.6;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://www.mercedes-benz.com/content/dam/brandhub/mbsocialcar/mbsocialcar-mercedes-benz-s-class-wv-223-3400x1440.jpg.asset.1623398418489.jpg') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            width: 200px;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .header-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Навигация */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--mb-dark);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--mb-primary);
+        }
+        
+        .navbar-logo span {
+            color: white;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+        }
+        
+        .navbar-nav li {
+            margin-left: 2rem;
+        }
+        
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .navbar-nav a:hover {
+            color: var(--mb-primary);
+        }
+        
+        .navbar-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--mb-primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .navbar-nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--mb-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: #0085b7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 161, 224, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--mb-dark);
+            border-color: white;
+        }
+        
+        /* Основное содержимое */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--mb-dark);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title p {
+            color: var(--mb-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Каталог автомобилей */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .car-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .car-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .car-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .car-card:hover .car-img img {
+            transform: scale(1.1);
+        }
+        
+        .car-info {
+            padding: 1.5rem;
+        }
+        
+        .car-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--mb-dark);
+        }
+        
+        .car-model {
+            color: var(--mb-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .car-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            color: var(--mb-gray);
+        }
+        
+        .car-specs span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .car-specs i {
+            margin-right: 0.5rem;
+            color: var(--mb-primary);
+        }
+        
+        .car-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--mb-dark);
+        }
+        
+        /* Преимущества */
+        .features {
+            background-color: var(--mb-dark);
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            color: var(--mb-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        
+        .feature p {
+            color: #ccc;
+        }
+        
+        /* Контакты */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: var(--mb-gray);
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details i {
+            font-size: 1.2rem;
+            color: var(--mb-primary);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--mb-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--mb-primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--mb-primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--mb-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 1rem;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--mb-primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+            
+            .navbar-nav li {
+                margin: 0 0.5rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+/* Базовые стили и сброс */
+:root {
+  --primary-color: #63cdda;
+  --secondary-color: #f8a5c2;
+  --accent-color: #ff6b6b;
+  --dark-bg: #0f3460;
+  --darker-bg: #16213e;
+  --darkest-bg: #1a1a2e;
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --transition-base: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-long: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --box-shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 10px 20px rgba(0, 0, 0, 0.2);
+  --box-shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.3);
+  --section-spacing: 100px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--text-light);
+  background: linear-gradient(135deg, var(--darkest-bg), var(--darker-bg), var(--dark-bg));
+  overflow-x: hidden;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Типография */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 5.6rem;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 4.2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 2.8rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 3rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition-long);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  color: white;
+  box-shadow: var(--box-shadow-md);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition-base);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+/* Герой секция */
+.hero {
+  height: 100vh;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0) 70%);
+  z-index: 0;
+  animation: pulse 15s infinite alternate, rotate-gradient 60s linear infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero .subtitle {
+  font-size: 2.2rem;
+  margin-bottom: 4rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Плавающие изображения */
+.floating-images {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-top: 6rem;
+  perspective: 1000px;
+}
+
+.floating-img {
+  position: absolute;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-lg);
+  transition: var(--transition-long);
+  object-fit: cover;
+  filter: saturate(1.1) contrast(1.05) brightness(1.05);
+  will-change: transform;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.img1 {
+  width: 250px;
+  left: 10%;
+  top: 0;
+  z-index: 3;
+  animation: 
+    float 8s ease-in-out infinite,
+    rotate 20s linear infinite,
+    glow 4s ease-in-out infinite alternate;
+}
+
+.img2 {
+  width: 280px;
+  right: 15%;
+  top: 30px;
+  z-index: 2;
+  animation: 
+    float 6s ease-in-out infinite 2s,
+    rotateReverse 25s linear infinite,
+    glow 5s ease-in-out infinite alternate 1s;
+}
+
+.img3 {
+  width: 220px;
+  left: 25%;
+  top: 100px;
+  z-index: 1;
+  animation: 
+    float 7s ease-in-out infinite 1s,
+    glow 3s ease-in-out infinite alternate 0.5s;
+}
+
+/* Секции */
+.section {
+  padding: var(--section-spacing) 0;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 7rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 7rem;
+  font-size: 2rem;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Карточки */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-md);
+  padding: 4rem;
+  transition: var(--transition-long);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(99, 205, 218, 0.1) 0%, 
+    rgba(248, 165, 194, 0.1) 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--box-shadow-lg);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-icon {
+  font-size: 5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  transition: var(--transition-base);
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.card-title {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.card-text {
+  margin-bottom: 3rem;
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+/* Сетка */
+.grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Параллакс секция */
+.parallax {
+  height: 60vh;
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(15, 52, 96, 0.9) 0%,
+    rgba(22, 33, 62, 0.8) 100%
+  );
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+/* Подвал */
+.footer {
+  background: var(--darkest-bg);
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.footer-logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  display: inline-block;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-links h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  transition: var(--transition-base);
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  font-size: 1.4rem;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.2); opacity: 0.2; }
+  100% { transform: scale(1); opacity: 0.1; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes rotate-gradient {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+  to { box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Утилиты */
+.text-center { text-align: center; }
+.mb-sm { margin-bottom: 2rem; }
+.mb-md { margin-bottom: 4rem; }
+.mb-lg { margin-bottom: 6rem; }
+.mb-xl { margin-bottom: 8rem; }
+.opacity-0 { opacity: 0; }
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  html { font-size: 58%; }
+  
+  .hero { min-height: 700px; }
+  
+  h1 { font-size: 4.8rem; }
+  h2 { font-size: 3.6rem; }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 55%; }
+  
+  .hero { min-height: 600px; }
+  
+  .floating-images { height: 300px; }
+  .img1, .img2, .img3 { width: 180px; }
+  
+  .section { padding: 80px 0; }
+}
+
+@media (max-width: 576px) {
+  h1 { font-size: 3.8rem; }
+  h2 { font-size: 3rem; }
+  
+  .hero-buttons { flex-direction: column; }
+  .btn { width: 100%; }
+  
+  .floating-images { height: 200px; margin-top: 4rem; }
+  .img1, .img2, .img3 { width: 120px; }
+}
+/* Основные стили */
+:root {
+  --primary-color: #6c5ce7;
+  --secondary-color: #a29bfe;
+  --accent-color: #fd79a8;
+  --dark-color: #2d3436;
+  --light-color: #f5f6fa;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Анимации */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Кнопки */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-secondary);
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+/* Карточки */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card__icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  animation: pulse 2s infinite;
+}
+
+/* Заголовки */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* Герой секция */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero__title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__image {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Эффекты при скролле */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Подложка с частицами */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 10s infinite linear;
+}
+    </style>
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <nav class="navbar">
+        <div class="navbar-logo">Mercedes<span>-Benz</span></div>
+        <ul class="navbar-nav">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Каталог</a></li>
+            <li><a href="#">Услуги</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Герой-секция -->
+    <header>
+        <img src="https://DimaPVO.github.io/mers.png" alt="Mercedes-Benz Logo" class="logo">
+        <div class="header-content">
+            <h1>Официальный дилер Mercedes-Benz</h1>
+            <p>Эксклюзивные модели, индивидуальный сервис и лучшие условия покупки</p>
+            <div>
+                <a href="#" class="btn">Каталог автомобилей</a>
+                <a href="#" class="btn btn-outline">Запись на тест-драйв</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Каталог автомобилей -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Популярные модели</h2>
+                <p>Выберите свой идеальный Mercedes-Benz из нашего актуального каталога</p>
+            </div>
+            
+            <div class="cars-grid">
+                <!-- Автомобиль 1 -->
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/eqe/_jcr_content/image.MQ6.12.20211013084303.jpeg" alt="Mercedes-Benz EQE">
+                    </div>
+                    <div class="car-info">
+                        <h3>EQE</h3>
+                        <span class="car-model">Электрический седан бизнес-класса</span>
+                        <div class="car-specs">
+                            <span><i class="fas fa-bolt"></i> 292 л.с.</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 4.3 сек</span>
+                            <span><i class="fas fa-road"></i> 660 км</span>
+                        </div>
+                        <div class="car-price">
+                            <div>
+                                <span class="price">15 000 000 ₽</span>
+                            </div>
+                            <a href="#" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Автомобиль 2 -->
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/s-class/_jcr_content/image.MQ6.12.20200928131600.jpeg" alt="Mercedes-Benz S-Class">
+                    </div>
+                    <div class="car-info">
+                        <h3>S-Class</h3>
+                        <span class="car-model">Флагманский седан люкс-класса</span>
+                        <div class="car-specs">
+                            <span><i class="fas fa-gas-pump"></i> 3.0 л</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 5.1 сек</span>
+                            <span><i class="fas fa-cogs"></i> 9G-Tronic</span>
+                        </div>
+                        <div class="car-price">
+                            <div>
+                                <span class="price">25 500 000 ₽</span>
+                            </div>
+                            <a href="#" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Автомобиль 3 -->
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/g-class/_jcr_content/image.MQ6.12.20200928131600.jpeg" alt="Mercedes-Benz G-Class">
+                    </div>
+                    <div class="car-info">
+                        <h3>G-Class</h3>
+                        <span class="car-model">Легендарный внедорожник</span>
+                        <div class="car-specs">
+                            <span><i class="fas fa-gas-pump"></i> 4.0 л</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 5.9 сек</span>
+                            <span><i class="fas fa-car"></i> Полный привод</span>
+                        </div>
+                        <div class="car-price">
+                            <div>
+                                <span class="price">112 000 000 ₽</span>
+                            </div>
+                            <a href="#" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Преимущества -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему выбирают нас</h2>
+                <p>Мы предлагаем исключительные условия и сервис для наших клиентов</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Официальный дилер</h3>
+                    <p>Гарантия производителя и полная сервисная поддержка</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-euro-sign"></i>
+                    <h3>Выгодные условия</h3>
+                    <p>Специальные программы кредитования и лизинга</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Сервисное обслуживание</h3>
+                    <p>Собственный техцентр с оригинальными запчастями</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Гарантия качества</h3>
+                    <p>Тщательная проверка всех автомобилей перед продажей</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь с нами</h2>
+                <p>Мы готовы ответить на все ваши вопросы и помочь с выбором автомобиля</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Mercedes-Benz Автосалон</h3>
+                    <p>Посетите наш шоу-рум, чтобы увидеть автомобили вживую и получить профессиональную консультацию.</p>
+                    
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, Ленинский проспект, 123</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@mercedes-dealer.ru</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock"></i>
+                            <span>Пн-Пт: 9:00 - 21:00, Сб-Вс: 10:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Ваш email" required>
+                        <input type="tel" placeholder="Ваш телефон">
+                        <textarea placeholder="Ваше сообщение"></textarea>
+                        <button type="submit" class="btn">Отправить запрос</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Mercedes-Benz</h3>
+                    <p>Официальный дилер Mercedes-Benz в России. Продажа новых автомобилей с гарантией производителя.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Модельный ряд</h3>
+                    <ul>
+                        <li><a href="#">Седаны</a></li>
+                        <li><a href="#">Внедорожники</a></li>
+                        <li><a href="#">Купе</a></li>
+                        <li><a href="#">Кабриолеты</a></li>
+                        <li><a href="#">Электромобили</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#">Продажа новых авто</a></li>
+                        <li><a href="#">Trade-in</a></li>
+                        <li><a href="#">Кредитование</a></li>
+                        <li><a href="#">Страхование</a></li>
+                        <li><a href="#">Сервисное обслуживание</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Новости</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy;  Mercedes-Benz Автосалон</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

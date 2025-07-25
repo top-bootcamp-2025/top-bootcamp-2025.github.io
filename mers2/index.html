@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz | Официальный дилер</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+     <link rel="stylesheet" href="animazia.css">
+    <style>
+        /* Глобальные стили */
+        :root {
+            --mb-primary: #00A1E0;
+            --mb-dark: #000000;
+            --mb-light: #F8F8F8;
+            --mb-gray: #333333;
+            --mb-silver: #C0C0C0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--mb-light);
+            color: var(--mb-gray);
+            line-height: 1.6;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://www.mercedes-benz.com/content/dam/brandhub/mbsocialcar/mbsocialcar-mercedes-benz-s-class-wv-223-3400x1440.jpg.asset.1623398418489.jpg') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            width: 200px;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .header-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Навигация */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--mb-dark);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--mb-primary);
+        }
+        
+        .navbar-logo span {
+            color: white;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+        }
+        
+        .navbar-nav li {
+            margin-left: 2rem;
+        }
+        
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .navbar-nav a:hover {
+            color: var(--mb-primary);
+        }
+        
+        .navbar-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--mb-primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .navbar-nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--mb-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: #0085b7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 161, 224, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--mb-dark);
+            border-color: white;
+        }
+        
+        /* Основное содержимое */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--mb-dark);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title p {
+            color: var(--mb-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Каталог автомобилей */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .car-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .car-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .car-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .car-card:hover .car-img img {
+            transform: scale(1.1);
+        }
+        
+        .car-info {
+            padding: 1.5rem;
+        }
+        
+        .car-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--mb-dark);
+        }
+        
+        .car-model {
+            color: var(--mb-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .car-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            color: var(--mb-gray);
+        }
+        
+        .car-specs span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .car-specs i {
+            margin-right: 0.5rem;
+            color: var(--mb-primary);
+        }
+        
+        .car-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--mb-dark);
+        }
+        
+        /* Преимущества */
+        .features {
+            background-color: var(--mb-dark);
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            color: var(--mb-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        
+        .feature p {
+            color: #ccc;
+        }
+        
+        /* Контакты */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: var(--mb-gray);
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details i {
+            font-size: 1.2rem;
+            color: var(--mb-primary);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--mb-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--mb-primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--mb-primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--mb-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 1rem;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--mb-primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+            
+            .navbar-nav li {
+                margin: 0 0.5rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <nav class="navbar">
+        <div class="navbar-logo">Mercedes<span>-Benz</span></div>
+        <ul class="navbar-nav">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Каталог</a></li>
+            <li><a href="#">Услуги</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Герой-секция -->
+    <header>
+        <img src="https://DimaPVO.github.io/mers.png" alt="Mercedes-Benz Logo" class="logo">
+        <div class="header-content">
+            <h1>Официальный дилер Mercedes-Benz</h1>
+            <p>Эксклюзивные модели, индивидуальный сервис и лучшие условия покупки</p>
+            <div>
+                <a href="#" class="btn">Каталог автомобилей</a>
+                <a href="#" class="btn btn-outline">Запись на тест-драйв</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Каталог автомобилей -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Популярные модели</h2>
+                <p>Выберите свой идеальный Mercedes-Benz из нашего актуального каталога</p>
+            </div>
+            
+            <div class="cars-grid">
+                <!-- Автомобиль 1 -->
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/eqe/_jcr_content/image.MQ6.12.20211013084303.jpeg" alt="Mercedes-Benz EQE">
+                    </div>
+                    <div class="car-info">
+                        <h3>EQE</h3>
+                        <span class="car-model">Электрический седан бизнес-класса</span>
+                        <div class="car-specs">
+                            <span><i class="fas fa-bolt"></i> 292 л.с.</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 4.3 сек</span>
+                            <span><i class="fas fa-road"></i> 660 км</span>
+                        </div>
+                        <div class="car-price">
+                            <div>
+                                <span class="price">15 000 000 ₽</span>
+                            </div>
+                            <a href="#" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Автомобиль 2 -->
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/s-class/_jcr_content/image.MQ6.12.20200928131600.jpeg" alt="Mercedes-Benz S-Class">
+                    </div>
+                    <div class="car-info">
+                        <h3>S-Class</h3>
+                        <span class="car-model">Флагманский седан люкс-класса</span>
+                        <div class="car-specs">
+                            <span><i class="fas fa-gas-pump"></i> 3.0 л</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 5.1 сек</span>
+                            <span><i class="fas fa-cogs"></i> 9G-Tronic</span>
+                        </div>
+                        <div class="car-price">
+                            <div>
+                                <span class="price">25 500 000 ₽</span>
+                            </div>
+                            <a href="#" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Автомобиль 3 -->
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="https://www.mercedes-benz.com/en/vehicles/passenger-cars/g-class/_jcr_content/image.MQ6.12.20200928131600.jpeg" alt="Mercedes-Benz G-Class">
+                    </div>
+                    <div class="car-info">
+                        <h3>G-Class</h3>
+                        <span class="car-model">Легендарный внедорожник</span>
+                        <div class="car-specs">
+                            <span><i class="fas fa-gas-pump"></i> 4.0 л</span>
+                            <span><i class="fas fa-tachometer-alt"></i> 5.9 сек</span>
+                            <span><i class="fas fa-car"></i> Полный привод</span>
+                        </div>
+                        <div class="car-price">
+                            <div>
+                                <span class="price">112 000 000 ₽</span>
+                            </div>
+                            <a href="#" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Преимущества -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему выбирают нас</h2>
+                <p>Мы предлагаем исключительные условия и сервис для наших клиентов</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Официальный дилер</h3>
+                    <p>Гарантия производителя и полная сервисная поддержка</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-euro-sign"></i>
+                    <h3>Выгодные условия</h3>
+                    <p>Специальные программы кредитования и лизинга</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Сервисное обслуживание</h3>
+                    <p>Собственный техцентр с оригинальными запчастями</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Гарантия качества</h3>
+                    <p>Тщательная проверка всех автомобилей перед продажей</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь с нами</h2>
+                <p>Мы готовы ответить на все ваши вопросы и помочь с выбором автомобиля</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Mercedes-Benz Автосалон</h3>
+                    <p>Посетите наш шоу-рум, чтобы увидеть автомобили вживую и получить профессиональную консультацию.</p>
+                    
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, Ленинский проспект, 123</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@mercedes-dealer.ru</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock"></i>
+                            <span>Пн-Пт: 9:00 - 21:00, Сб-Вс: 10:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Ваш email" required>
+                        <input type="tel" placeholder="Ваш телефон">
+                        <textarea placeholder="Ваше сообщение"></textarea>
+                        <button type="submit" class="btn">Отправить запрос</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Mercedes-Benz</h3>
+                    <p>Официальный дилер Mercedes-Benz в России. Продажа новых автомобилей с гарантией производителя.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Модельный ряд</h3>
+                    <ul>
+                        <li><a href="#">Седаны</a></li>
+                        <li><a href="#">Внедорожники</a></li>
+                        <li><a href="#">Купе</a></li>
+                        <li><a href="#">Кабриолеты</a></li>
+                        <li><a href="#">Электромобили</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#">Продажа новых авто</a></li>
+                        <li><a href="#">Trade-in</a></li>
+                        <li><a href="#">Кредитование</a></li>
+                        <li><a href="#">Страхование</a></li>
+                        <li><a href="#">Сервисное обслуживание</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Новости</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy;  Mercedes-Benz Автосалон</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
